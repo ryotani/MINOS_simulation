@@ -1,14 +1,17 @@
-include $(ROOTSYS)/tmva/Makefile.arch
+#ARCH         := $(shell root-config --arch)
+#PLATFORM      = $(ARCH)
+#include $(ROOTSYS)/tmva/Makefile.arch
+include Makefile.arch
 
 #------------------------------------------------------------------------------
-SHARELIB      =  libExN03Datai.dylib
+SHARELIB      =  libExN03Datai.so
 
 all:            $(SHARELIB)
 #------------------------------------------------------------------------------
 ############### Detector ##############
 
 ## TPC ##
-libExN03Datai.dylib:    ExN03Datai.o	ExN03DataiDict.o
+libExN03Datai.so:    ExN03Datai.o	ExN03DataiDict.o
 		$(LD) $(SOFLAGS) $^ $(OutPutOpt) $@
 
 ExN03DataiDict.cxx:	ExN03Datai.hh
@@ -26,7 +29,7 @@ clean:
 	@rm -f core *~ *.o *Dict*
 
 distclean:
-	  make clean; rm -f *.dylib
+	  make clean; rm -f *.so
 
 .SUFFIXES: .$(SrcSuf)
 

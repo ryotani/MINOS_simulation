@@ -1,0 +1,71 @@
+ARCH         := $(shell root-config --arch)
+PLATFORM      = $(ARCH)
+
+OBJS = 
+
+#======= BEGIN CONFIGURATION =========
+
+# TClonesArray variables
+OBJS += TMinosTPCSimData.o
+OBJS += TMinosTrack.o
+OBJS += TMinosHough.o
+OBJS += TMinosClust.o
+OBJS += TMinosResult.o
+
+#=======  END  CONFIGURATION =========
+
+CXX           = g++
+CXXFLAGS      = -O -Wall -fPIC
+LD            = g++
+LDFLAGS       = -O
+SOFLAGS       = -shared
+
+ObjSuf        = o
+#SrcSuf        = cpp
+SrcSuf        = cxx
+DllSuf        = so
+OutPutOpt     = -o
+
+#minoslib_dir = /home/taniuchi/exp/minos/liboffline
+#anaroot_dir = ./../src
+
+### NOTE, FOR THE NEXT 3 LINES TO WORK YOU HAVE TO
+### HAVE $(ROOTSYS)/bin in your path
+ROOTCFLAGS   := $(shell root-config --cflags)
+ROOTLIBS     := $(shell root-config --libs) #-L/home/taniuchi/root/lib -lMinuit
+#MINOSLIBS    := -L$(minoslib_dir) -lminos
+#ANAROOTLIBS  := -L$(anaroot_dir)/lib -lanaroot -lananadeko -lanacore -lanabrips -lanaminos -lanadali -lanaanaloop
+
+
+CXX           = g++
+CXXFLAGS      = -g -O -Wall -fPIC -DEBUG
+CPPFLAGS      = -I$(minoslib_dir) -I$(anaroot_dir)/include
+LD            = g++
+LDFLAGS       = -O2 #-mtune=corei7 -march=corei7 -m64
+SOFLAGS       = -shared
+
+CXXFLAGS     += $(ROOTCFLAGS)
+LIBS          = $(MINOSLIBS) $(ROOTLIBS)  $(SYSLIBS) $(ANAROOTLIBS) -lXMLParser
+
+########################################################
+# here is where you define the files that will be used
+# and the output file that will be created.
+#OBJS          = MakeMINOSOfflineCut.o
+#PROGRAMS      = ./MakeMINOSOfflineCut
+#######################################################
+.SUFFIXES: .$(SrcSuf) .$(ObjSuf) .$(DllSuf)
+
+#$(PROGRAMS):
+all:	$(OBJS)
+	$(LD) $(LDFLAGS) $^ \
+	$(LIBS) $(OutPutOpt)$@
+	@echo "$@ done"
+
+clean:
+	@rm -f $(OBJS) core
+	@rm -f $(PROGRAMS)
+
+
+
+.$(SrcSuf).$(ObjSuf):
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -shared -c $<

@@ -1,14 +1,17 @@
-include $(ROOTSYS)/tmva/Makefile.arch
+#ARCH         := $(shell root-config --arch)
+#PLATFORM      = $(ARCH)
+#include $(ROOTSYS)/tmva/Makefile.arch
+include Makefile.arch
 
 #------------------------------------------------------------------------------
-SHARELIB      =  libExN03Datai.dylib libExN03DataoRings.dylib
+SHARELIB      =  libExN03Datai.so libExN03DataoRings.so
 
 all:            $(SHARELIB)
 #------------------------------------------------------------------------------
 ############### Detector ##############
 
 ## TPC ##
-libExN03Datai.dylib:    ExN03Datai.o	ExN03DataiDict.o
+libExN03Datai.so:    ExN03Datai.o	ExN03DataiDict.o
 		$(LD) $(SOFLAGS) $^ $(OutPutOpt) $@
 
 ExN03DataiDict.cxx:	ExN03Datai.hh
@@ -19,7 +22,7 @@ ExN03DataiDict.cxx:	ExN03Datai.hh
 ExN03Datai.o:		ExN03Datai.cxx	ExN03Datai.hh
 ExN03DataiDict.o:	ExN03DataiDict.cxx
 
-libExN03DataoRings.dylib:    ExN03DataoRings.o	ExN03DataoDictRings.o
+libExN03DataoRings.so:    ExN03DataoRings.o	ExN03DataoDictRings.o
 		$(LD) $(SOFLAGS) $^ $(OutPutOpt) $@
 
 ExN03DataoDictRings.cxx:	ExN03DataoRings.hh
@@ -36,7 +39,7 @@ clean:
 	@rm -f core *~ *.o *Dict*
 
 distclean:
-	  make clean; rm -f *.dylib
+	  make clean; rm -f *.so
 
 .SUFFIXES: .$(SrcSuf)
 

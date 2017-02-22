@@ -1,14 +1,17 @@
-include $(ROOTSYS)/tmva/Makefile.arch
+#ARCH         := $(shell root-config --arch)
+#PLATFORM      = $(ARCH)
+#include $(ROOTSYS)/tmva/Makefile.arch
+include Makefile.arch
 
 #------------------------------------------------------------------------------
-SHARELIB      =  libExN03BeamIn.dylib
+SHARELIB      =  libExN03BeamIn.so
 
 all:            $(SHARELIB)
 #------------------------------------------------------------------------------
 ############### Detector ##############
 
 ## TPC ##
-libExN03BeamIn.dylib:    ExN03BeamIn.o	ExN03BeamInDict.o
+libExN03BeamIn.so:    ExN03BeamIn.o	ExN03BeamInDict.o
 		$(LD) $(SOFLAGS) $^ $(OutPutOpt) $@
 
 ExN03BeamInDict.cxx:	ExN03BeamIn.hh
@@ -26,7 +29,7 @@ clean:
 	@rm -f core *~ *.o *Dict*
 
 distclean:
-	  make clean; rm -f *.dylib
+	  make clean; rm -f *.so
 
 .SUFFIXES: .$(SrcSuf)
 
