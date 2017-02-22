@@ -1,0 +1,38 @@
+include $(ROOTSYS)/tmva/Makefile.arch
+
+#------------------------------------------------------------------------------
+SHARELIB      =  libExN03Datai.dylib
+
+all:            $(SHARELIB)
+#------------------------------------------------------------------------------
+############### Detector ##############
+
+## TPC ##
+libExN03Datai.dylib:    ExN03Datai.o	ExN03DataiDict.o
+		$(LD) $(SOFLAGS) $^ $(OutPutOpt) $@
+
+ExN03DataiDict.cxx:	ExN03Datai.hh
+			rootcint -f $@ -c $^
+
+
+# dependances
+ExN03Datai.o:		ExN03Datai.cxx	ExN03Datai.hh
+ExN03DataiDict.o:	ExN03DataiDict.cxx
+
+#######################################
+
+############# Clean and More ##########
+clean:
+	@rm -f core *~ *.o *Dict*
+
+distclean:
+	  make clean; rm -f *.dylib
+
+.SUFFIXES: .$(SrcSuf)
+
+###
+
+.$(SrcSuf).$(ObjSuf):
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $<
+
+

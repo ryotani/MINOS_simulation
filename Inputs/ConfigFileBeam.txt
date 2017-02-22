@@ -1,0 +1,14 @@
+MeanX 0
+SigmaX 0
+MeanY 0
+SigmaY 0
+Z0 -0.5
+MeanMomentumX 0
+SigmaMomentumX 0
+MeanMomentumY 0
+SigmaMomentumY 0
+MomentumZ0 1.
+MeanEnergy 92400.
+SigmaEnergy 0.
+Z 50
+A 132

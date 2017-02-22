@@ -1,0 +1,10 @@
+TimeBin 10.0
+sigL   0.17
+sigT   0.20
+driftV 0.06
+Ionis  30.
+Threshold 1000
+Gain  1500
+Theta 0.3
+NoiseRMS 850
+Surf 1.0

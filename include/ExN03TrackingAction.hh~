@@ -1,0 +1,22 @@
+#ifndef ExN03TrackingAction_h
+#define ExN03TrackingAction_h 1
+
+#include "G4UserTrackingAction.hh"
+#include "RecorderBase.hh"
+
+
+class ExN03TrackingAction : public G4UserTrackingAction
+{
+
+public:
+  ExN03TrackingAction(RecorderBase*);
+  virtual ~ExN03TrackingAction();
+
+  void PreUserTrackingAction();
+  void PostUserTrackingAction(const G4Track*);    
+private:
+  RecorderBase *records;
+
+};
+
+#endif

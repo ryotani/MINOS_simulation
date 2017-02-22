@@ -1,0 +1,14 @@
+NRings 20
+NSegments 256
+FirstRing 45.
+LastRing 95.
+sigL   0.190
+sigT   0.195
+driftV 0.052
+Ionis  40.0
+Gain  1500.
+Theta 1.
+NoiseRMS 2500
+Threshold 5.
+TimeBin 20.0
+ShapingTime 412.

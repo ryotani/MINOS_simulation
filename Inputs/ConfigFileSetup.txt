@@ -1,0 +1,26 @@
+TargetRadius 10.
+TargetLength 100.
+ChamberInnerRadius 15.
+ChamberThickness 1.
+ChamberLength 500.
+InnerRohacellThickness 1.
+KaptonThickness 0.125
+OuterRohacellThickness 2.
+TPCRadiusExt 135.
+TrackerRadiusInt 221.
+TrackerRadiusExt 231.
+TriggerRadiusInt 210.
+TriggerRadiusExt 220.
+TriggerLength 600.
+GammaDetRadiusInt 234.
+GammaDetRadiusExt 244.
+WindowThickness 0.150
+
+//MINOS is defined successively by (all values have to be given in millimeters):
+//	- a target: TargetRadius, TargetLength
+//	- a chamber: ChamberInnerRadius, ChamberThickness, ChamberLength
+//	- inner Rohacell: inner radius = ChamberInnerRadius + ChamberThickness, InnerRohacellThickness, length = ChamberLength
+//	- Kapton: inner radius = ChamberInnerRadius + ChamberThickness + InnerRohacellThickness, KaptonThickness, length = ChamberLength
+//	- outer Rohacell: inner radius = ChamberInnerRadius + ChamberThickness + InnerRohacellThickness + KaptonThickness, OuterRohacellThickness, length = ChamberLength
+//	- TPC gas: inner radius = ChamberInnerRadius + ChamberThickness + InnerRohacellThickness + KaptonThickness + OuterRohacellThickness, TPCOuterRadius, length = ChamberLength
+//	- a Mylar window delimiting the volume target: WindowThickness

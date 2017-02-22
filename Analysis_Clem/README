@@ -1,0 +1,6 @@
+
+Suivant la forme de l'arbre de sortie, si tu ne l'as pas modifié par rapport à Laurent, tu dois d'abord faire tourner la macro "convtree.C" (.L convtree.C+ et convtree("inpuFile.root") dans root).
+
+Ensuite, tu peux faire tourner la macro "minos.simuNexclusterfind.cpp" avec le Makefile_simuNewclust.
+
+Enfin, il faut faire tourner la macro "plotvertexHoughNew.C" dans ROOT également.

@@ -1,0 +1,158 @@
+#include "ExN03PrimaryGeneratorMessenger.hh"
+
+#include "ExN03PrimaryGeneratorAction.hh"
+#include "G4UIdirectory.hh"
+#include "G4UIcmdWithADouble.hh"
+#include "G4UIcmdWithADoubleAndUnit.hh"
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+ExN03PrimaryGeneratorMessenger::ExN03PrimaryGeneratorMessenger(
+                                          ExN03PrimaryGeneratorAction* ExN03Gun)
+:ExN03Action(ExN03Gun)
+{
+ gunDir = new G4UIdirectory("/gun/");
+ gunDir->SetGuidance("PrimaryGenerator control");
+   
+ protonDir = new G4UIdirectory("/gun/proton/");
+ protonDir -> SetGuidance("set parameters of a proton");
+ 
+ protonPositionDir = new G4UIdirectory("/gun/proton/position/");  
+ protonPositionDir -> SetGuidance ("set vertex position of the proton ");  
+
+ protonEnergyDir = new G4UIdirectory("/gun/proton/energy/");  
+ protonEnergyDir -> SetGuidance ("set energy of the proton");  
+
+ protonAngleDir = new G4UIdirectory("/gun/proton/angle/");  
+ protonAngleDir -> SetGuidance ("set angle of the proton ");  
+
+/*
+ beamDir = new G4UIdirectory("/gun/beam/");
+ beamDir -> SetGuidance("set parameters of a beam");
+ 
+ beamEnergyDir = new G4UIdirectory("/gun/beam/energy/");  
+ beamEnergyDir -> SetGuidance ("set energy of beam");  
+*/
+
+ protonMinXCmd = new G4UIcmdWithADoubleAndUnit("/gun/proton/position/MinX",this);
+ protonMinXCmd -> SetGuidance("set MinX for proton vertex");
+ protonMinXCmd -> SetParameterName("MinX",false);
+ protonMinXCmd -> SetDefaultUnit("mm");
+ protonMinXCmd -> SetUnitCandidates("mm cm m");
+ protonMinXCmd -> AvailableForStates(G4State_PreInit,G4State_Idle);   
+
+ protonMaxXCmd = new G4UIcmdWithADoubleAndUnit("/gun/proton/position/MaxX",this);
+ protonMaxXCmd -> SetGuidance("set MaxX for proton vertex");
+ protonMaxXCmd -> SetParameterName("MaxX",false);
+ protonMaxXCmd -> SetDefaultUnit("mm");
+ protonMaxXCmd -> SetUnitCandidates("mm cm m");
+ protonMaxXCmd -> AvailableForStates(G4State_PreInit,G4State_Idle);   
+
+ protonMinYCmd = new G4UIcmdWithADoubleAndUnit("/gun/proton/position/MinY",this);
+ protonMinYCmd -> SetGuidance("set MinY for proton verteY");
+ protonMinYCmd -> SetParameterName("MinY",false);
+ protonMinYCmd -> SetDefaultUnit("mm");
+ protonMinYCmd -> SetUnitCandidates("mm cm m");
+ protonMinYCmd -> AvailableForStates(G4State_PreInit,G4State_Idle);   
+
+ protonMaxYCmd = new G4UIcmdWithADoubleAndUnit("/gun/proton/position/MaxY",this);
+ protonMaxYCmd -> SetGuidance("set MaxY for proton verteY");
+ protonMaxYCmd -> SetParameterName("MaxY",false);
+ protonMaxYCmd -> SetDefaultUnit("mm");
+ protonMaxYCmd -> SetUnitCandidates("mm cm m");
+ protonMaxYCmd -> AvailableForStates(G4State_PreInit,G4State_Idle);   
+
+ protonMinZCmd = new G4UIcmdWithADoubleAndUnit("/gun/proton/position/MinZ",this);
+ protonMinZCmd -> SetGuidance("set MinZ for proton verteZ");
+ protonMinZCmd -> SetParameterName("MinZ",false);
+ protonMinZCmd -> SetDefaultUnit("mm");
+ protonMinZCmd -> SetUnitCandidates("mm cm m");
+ protonMinZCmd -> AvailableForStates(G4State_PreInit,G4State_Idle);   
+
+ protonMaxZCmd = new G4UIcmdWithADoubleAndUnit("/gun/proton/position/MaxZ",this);
+ protonMaxZCmd -> SetGuidance("set MaxZ for proton verteZ");
+ protonMaxZCmd -> SetParameterName("MaxZ",false);
+ protonMaxZCmd -> SetDefaultUnit("mm");
+ protonMaxZCmd -> SetUnitCandidates("mm cm m");
+ protonMaxZCmd -> AvailableForStates(G4State_PreInit,G4State_Idle);   
+
+ protonMinEnergyCmd = new G4UIcmdWithADoubleAndUnit("/gun/proton/energy/MinEnergy",this);
+ protonMinEnergyCmd -> SetGuidance("set Min Kinetic energy");
+ protonMinEnergyCmd -> SetParameterName("MinEnergy",false);
+ protonMinEnergyCmd -> SetDefaultUnit("MeV");
+ protonMinEnergyCmd -> SetUnitCandidates("eV keV MeV GeV TeV");
+ protonMinEnergyCmd -> AvailableForStates(G4State_PreInit,G4State_Idle);   
+ 
+ protonMaxEnergyCmd = new G4UIcmdWithADoubleAndUnit("/gun/proton/energy/MaxEnergy",this);
+ protonMaxEnergyCmd -> SetGuidance("set Max Kinetic energy");
+ protonMaxEnergyCmd -> SetParameterName("MaxEnergy",false);
+ protonMaxEnergyCmd -> SetDefaultUnit("MeV");
+ protonMaxEnergyCmd -> SetUnitCandidates("eV keV MeV GeV TeV");
+ protonMaxEnergyCmd -> AvailableForStates(G4State_PreInit,G4State_Idle);   
+ 
+ protonMinAngleCmd = new G4UIcmdWithADouble("/gun/proton/angle/MinAngle",this);
+ protonMinAngleCmd -> SetGuidance("set Min Angle for the scattering proton");
+ protonMinAngleCmd -> SetParameterName("MinAngle",false);
+ protonMinAngleCmd -> AvailableForStates(G4State_PreInit,G4State_Idle);   
+ 
+ protonMaxAngleCmd = new G4UIcmdWithADouble("/gun/proton/angle/MaxAngle",this);
+ protonMaxAngleCmd -> SetGuidance("set Max Angle for the scattering proton");
+ protonMaxAngleCmd -> SetParameterName("MaxAngle",false);
+ protonMaxAngleCmd -> AvailableForStates(G4State_PreInit,G4State_Idle);   
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+ExN03PrimaryGeneratorMessenger::~ExN03PrimaryGeneratorMessenger()
+{
+  delete gunDir;
+  delete protonDir;
+  delete protonPositionDir;
+  delete protonEnergyDir;
+  delete protonAngleDir;
+}
+
+void ExN03PrimaryGeneratorMessenger::SetNewValue(
+                                        G4UIcommand* command, G4String newValue)
+{ 
+  if(command == protonMeanXCmd) {
+      G4double MeanX = protonMeanXCmd->GetNewDoubleValue(newValue);
+      ExN03Action->SetMeanX(MeanX);
+      }
+  if(command == protonSigmaXCmd) {
+      G4double SigmaX = protonSigmaXCmd->GetNewDoubleValue(newValue);
+      ExN03Action->SetSigmaX(SigmaX);
+      }
+  if(command == protonMeanYCmd) {
+      G4double MeanY = protonMeanYCmd->GetNewDoubleValue(newValue);
+      ExN03Action->SetMeanY(MeanY);
+      }
+  if(command == protonSigmaYCmd) {
+      G4double SigmaY = protonSigmaYCmd->GetNewDoubleValue(newValue);
+      ExN03Action->SetSigmaY(SigmaY);
+      }
+  /*if(command == protonMinZCmd) {
+      G4double MinZ = protonMinZCmd->GetNewDoubleValue(newValue);
+      ExN03Action->SetMinZ(MinZ);
+      }
+  if(command == protonMaxZCmd) {
+      G4double MaxZ = protonMaxZCmd->GetNewDoubleValue(newValue);
+      ExN03Action->SetMaxZ(MaxZ);
+      }
+  if(command == protonMinEnergyCmd) {
+      G4double MinEnergy = protonMinEnergyCmd->GetNewDoubleValue(newValue);
+      ExN03Action->SetMinEnergy(MinEnergy);
+      }
+  if(command == protonMaxEnergyCmd) {
+      G4double MaxEnergy = protonMaxYCmd->GetNewDoubleValue(newValue);
+      ExN03Action->SetMaxEnergy(MaxEnergy);
+      }
+  if(command == protonMinAngleCmd) {
+      G4double MinAngle = protonMinAngleCmd->GetNewDoubleValue(newValue);
+      ExN03Action->SetMinAngle(MinAngle);
+      }
+  if(command == protonMaxAngleCmd) {
+      G4double MaxAngle = protonMaxAngleCmd->GetNewDoubleValue(newValue);
+      ExN03Action->SetMaxAngle(MaxAngle);
+      }*/
+}

@@ -1,0 +1,12 @@
+Ri     50.0
+Re    100.0
+NRings 24
+NSegments 256
+TimeBin 10.0
+sigL   0.17
+sigT   0.20
+driftV 0.06
+Ionis  30.
+Threshold 1000
+Gain  1500
+NoiseRMS 850

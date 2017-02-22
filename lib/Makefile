@@ -1,0 +1,47 @@
+include $(ROOTSYS)/tmva/Makefile.arch
+OBJ = 
+
+#======= BEGIN CONFIGURATION =========
+
+# TClonesArray variables
+OBJ += TMinosTPCSimData.o
+OBJ += TMinosTrack.o
+OBJ += TMinosHough.o
+OBJ += TMinosClust.o
+OBJ += TMinosResult.o
+
+#=======  END  CONFIGURATION =========
+
+SOFLAG = -dynamiclib -undefined dynamic_lookup
+
+TARGET = libsimclem.dylib
+HDR = $(OBJ:.o=.h)
+
+DICTSRC = .libsimclem_dict.cc
+DICTOBJ = $(DICTSRC:.cc=.o)
+DICTHDR = $(DICTSRC:.cc=.h)
+
+CXXFLAGS = -fPIC `root-config --cflags` 
+LDFLAGS = `root-config --libs` 
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ) $(DICTOBJ)
+	@echo `uname`
+	$(CXX) $(SOFLAG) -o $@ $^ $(LDFLAGS)
+
+-include $(OBJ:.o=.d)
+
+%.d: %.cc
+	clang -MM $(CXXFLAGS) $*.cc > $*.d
+	@mv -f $*.d $*.d.tmp
+	@sed -e 's|.*:|$*.o:|' < $*.d.tmp > $*.d
+	@sed -e 's/.*://' -e 's/\\$$//' < $*.d.tmp | fmt -1 | \
+	sed -e 's/^ *//' -e 's/$$/:/' >> $*.d
+	@rm -f $*.d.tmp
+
+$(DICTSRC): $(HDR) linkdef.h
+	rootcint -f $@ -c $^
+
+clean:
+	rm -f *.d *.o *.dylib $(DICTOBJ) $(DICTSRC) $(DICTHDR)

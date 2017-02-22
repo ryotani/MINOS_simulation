@@ -1,0 +1,48 @@
+include $(ROOTSYS)/tmva/Makefile.arch
+
+#------------------------------------------------------------------------------
+SHARELIB      =  libExN03Datai.dylib libExN03DataoRings.dylib
+
+all:            $(SHARELIB)
+#------------------------------------------------------------------------------
+############### Detector ##############
+
+## TPC ##
+libExN03Datai.dylib:    ExN03Datai.o	ExN03DataiDict.o
+		$(LD) $(SOFLAGS) $^ $(OutPutOpt) $@
+
+ExN03DataiDict.cxx:	ExN03Datai.hh
+			rootcint -f $@ -c $^
+
+
+# dependances
+ExN03Datai.o:		ExN03Datai.cxx	ExN03Datai.hh
+ExN03DataiDict.o:	ExN03DataiDict.cxx
+
+libExN03DataoRings.dylib:    ExN03DataoRings.o	ExN03DataoDictRings.o
+		$(LD) $(SOFLAGS) $^ $(OutPutOpt) $@
+
+ExN03DataoDictRings.cxx:	ExN03DataoRings.hh
+			rootcint -f $@ -c $^
+
+
+# dependances
+ExN03DataoRings.o:		ExN03DataoRings.cxx	ExN03DataoRings.hh ExN03Datai.cxx ExN03Datai.hh
+ExN03DataoDictRings.o:	ExN03DataoDictRings.cxx ExN03DataiDict.cxx
+#######################################
+
+############# Clean and More ##########
+clean:
+	@rm -f core *~ *.o *Dict*
+
+distclean:
+	  make clean; rm -f *.dylib
+
+.SUFFIXES: .$(SrcSuf)
+
+###
+
+.$(SrcSuf).$(ObjSuf):
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $<
+
+

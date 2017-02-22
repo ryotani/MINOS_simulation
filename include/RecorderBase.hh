@@ -1,0 +1,32 @@
+#ifndef RECORDER_BASE_H_
+#define RECORDER_BASE_H_
+
+#include "G4Run.hh"
+#include "G4Event.hh"
+#include "G4Track.hh"
+#include "G4Step.hh"
+
+class RecorderBase {
+
+public:
+
+virtual ~RecorderBase(){};
+
+virtual void RecordBeginOfRun()=0;
+virtual void RecordEndOfRun()=0;
+virtual void RecordBeginOfEvent(){};
+virtual void RecordEndOfEvent(){};
+virtual void RecordStepDEtarget(const G4Step *){};
+virtual void RecordStepDEchamber(const G4Step *){};
+virtual void RecordStepDEtpc(const G4Step *){};
+virtual void RecordStepDEwindow(const G4Step *){};
+virtual void RecordBeginOfTrack(){};
+virtual void RecordEndOfTrack(const G4Track *){};
+virtual void RecordStepDEInnerRohacell(const G4Step *){};
+virtual void RecordStepDEOuterRohacell(const G4Step *){};
+virtual void RecordStepDEKapton(const G4Step *){};
+virtual void RecordStepDEtrigger(const G4Step *){};
+private:
+
+};
+#endif

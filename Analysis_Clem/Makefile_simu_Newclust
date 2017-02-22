@@ -1,0 +1,56 @@
+ARCH         := $(shell root-config --arch)
+PLATFORM      = $(ARCH)
+
+CXX           = g++
+CXXFLAGS      = -O -Wall -fPIC 
+LD            = g++
+LDFLAGS       = -O
+SOFLAGS       = -dynamiclib -undefined dynamic_lookup
+
+ObjSuf        = o
+SrcSuf        = cpp
+DllSuf        = dylib
+OutPutOpt     = -o 
+
+minosdata_dir = /Users/acorsi/codes/PUMA_simu
+
+### NOTE, FOR THE NEXT 3 LINES TO WORK YOU HAVE TO 
+### HAVE $(ROOTSYS)/bin in your path
+ROOTCFLAGS   := $(shell root-config --cflags)
+ROOTLIBS     := $(shell root-config --libs)
+MINOSDATALIBS = -L$(minosdata_dir)/lib -lsimclem -lExN03Datai -lExN03DataoRings -lExN03Setup
+
+
+CXX           = g++
+CXXFLAGS      = -g -O -Wall -fPIC -DEBUG
+CPPFLAGS      = -I$(minosdata_dir)/lib
+LD            = g++
+LDFLAGS       = -O
+SOFLAGS       = -shared
+
+
+
+CXXFLAGS     += $(ROOTCFLAGS)
+LIBS          = $(MINOSDATALIBS) $(ROOTLIBS)  $(SYSLIBS) 
+
+########################################################
+# here is where you define the files that will be used 
+# and the output file that will be created.
+OBJS          = minos_simu_Newclusterfind.o 
+PROGRAMS      = ./minos_simu_Newclusterfind
+#######################################################
+.SUFFIXES: .$(SrcSuf) .$(ObjSuf) .$(DllSuf)
+
+$(PROGRAMS):    $(OBJS) 
+		$(LD) $(LDFLAGS) $^ \
+		$(LIBS) $(OutPutOpt)$@
+		@echo "$@ done"
+
+clean:
+		@rm -f $(OBJS) core
+		@rm -f $(PROGRAMS)
+
+
+
+.$(SrcSuf).$(ObjSuf):
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -shared -c $<
