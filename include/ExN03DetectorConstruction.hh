@@ -3,7 +3,8 @@
 
 #include "G4VUserDetectorConstruction.hh"
 #include "globals.hh"
-#include "/Users/acorsi/codes/MINOS_simulation/lib/ExN03Setup.hh"
+//#include "/Users/acorsi/codes/MINOS_simulation/lib/ExN03Setup.hh"
+#include "/home/local1/workspace/MINOS_simulation/lib/ExN03Setup.hh"
 
 class G4Box;
 class G4Tubs;

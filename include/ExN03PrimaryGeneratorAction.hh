@@ -3,8 +3,10 @@
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "globals.hh"
-#include "/Users/acorsi/codes/MINOS_simulation/lib/ExN03Setup.hh"
-#include "/Users/acorsi/codes/MINOS_simulation/lib/ExN03BeamIn.hh"
+//#include "/Users/acorsi/codes/MINOS_simulation/lib/ExN03Setup.hh"
+//#include "/Users/acorsi/codes/MINOS_simulation/lib/ExN03BeamIn.hh"
+#include "/home/local1/workspace/MINOS_simulation/lib/ExN03Setup.hh"
+#include "/home/local1/workspace/MINOS_simulation/lib/ExN03BeamIn.hh"
 #include "TH1.h"
 #include "TH2.h"
 #include "TH3.h"

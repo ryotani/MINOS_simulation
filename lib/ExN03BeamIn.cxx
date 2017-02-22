@@ -28,7 +28,8 @@ void ExN03BeamIn::ReadConfigurationFile(string Config)
    bool cZ       = false;  
    bool cA       = false;   
    
-   string Path = "/Users/acorsi/codes/MINOS_simulation/Inputs/"+Config;
+   //string Path = "/Users/acorsi/codes/MINOS_simulation/Inputs/"+Config;
+   string Path = "/home/local1/workspace/MINOS_simulation/Inputs/"+Config;
    ifstream ConfigFile;
    ConfigFile.open(Path.c_str());
 

@@ -18,8 +18,10 @@
 #include "G4Run.hh"
 #include "G4Step.hh"
 
-#include "/Users/acorsi/codes/MINOS_simulation/lib/ExN03BeamIn.hh"
-#include "/Users/acorsi/codes/MINOS_simulation/lib/ExN03Datai.hh"
+//#include "/Users/acorsi/codes/MINOS_simulation/lib/ExN03BeamIn.hh"
+//#include "/Users/acorsi/codes/MINOS_simulation/lib/ExN03Datai.hh"
+#include "/home/local1/workspace/MINOS_simulation/lib/ExN03BeamIn.hh"
+#include "/home/local1/workspace/MINOS_simulation/lib/ExN03Datai.hh"
 #include <vector>
 #include "G4VProcess.hh"
 

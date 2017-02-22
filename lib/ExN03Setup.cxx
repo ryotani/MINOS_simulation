@@ -24,7 +24,8 @@ void ExN03Setup::ReadConfigurationFile(string Config)
    bool cTPCRadiusExt       = false;
    bool cWindowThickness       = false;
    
-   string Path = "/Users/acorsi/codes/MINOS_simulation/Inputs/"+Config;
+   //string Path = "/Users/acorsi/codes/MINOS_simulation/Inputs/"+Config;
+   string Path = "/home/local1/workspace/MINOS_simulation/Inputs/"+Config;
    ifstream ConfigFile;
    ConfigFile.open(Path.c_str());
 
