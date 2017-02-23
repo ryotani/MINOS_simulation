@@ -26,19 +26,17 @@ void ExN03SteppingAction::UserSteppingAction(const G4Step* aStep)
   = aStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume();      
   G4Track *track = aStep->GetTrack(); 
 
-  //if (volume == detector->GetTarget() && (track->GetDefinition()->GetParticleName() == "e-"||track->GetDefinition()->GetParticleType() == "nucleus"))
-  if (volume == detector->GetTarget() && (track->GetDefinition()->GetParticleType() == "neutron"||
-					  (track->GetDefinition()->GetParticleType() == "nucleus") || (track->GetDefinition()->GetParticleName() == "proton"))) 
+  if (volume == detector->GetTarget() && (track->GetDefinition()->GetParticleName() == "e-"||track->GetDefinition()->GetParticleType() == "nucleus"))
+  //if (volume == detector->GetTarget() && track->GetDefinition()->GetParticleType() == "nucleus")
+    //((track->GetDefinition()->GetParticleType() == "nucleus") || (track->GetDefinition()->GetParticleName() == "proton") 
     //|| (track->GetDefinition()->GetParticleName() == "neutron") || (track->GetDefinition()->GetParticleName() == "kaon+")))
   {
   	if(records!=NULL){records->RecordStepDEtarget(aStep);}
   }
 
-  if (volume == detector->GetTPC()//)
-      &&
-    //&& track->GetDefinition()->GetParticleName() == "e-"&&
-      (track->GetDefinition()->GetParticleType() == "nucleus") || (track->GetDefinition()->GetParticleName() == "proton"))//&&
-    //  (track->GetDefinition()->GetParticleName() == "neutron") || (track->GetDefinition()->GetParticleName() == "kaon+"))
+  if (volume == detector->GetTPC()&& track->GetDefinition()->GetParticleName() == "e-")
+    //((track->GetDefinition()->GetParticleType() == "nucleus") || (track->GetDefinition()->GetParticleName() == "proton") || 
+     // (track->GetDefinition()->GetParticleName() == "neutron") || (track->GetDefinition()->GetParticleName() == "kaon+"))
   {
   	if(records!=NULL){records->RecordStepDEtpc(aStep); /*if(track->GetParentID()==0) G4cout<<"record TPC "<<track->GetTrackID()<<endl;*/}
   }

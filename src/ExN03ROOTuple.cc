@@ -27,7 +27,7 @@ ExN03ROOTuple::~ExN03ROOTuple(){
 void ExN03ROOTuple::RecordBeginOfRun()
 {
   //rfile=new TFile("/Users/acorsi/codes/MINOS_simulation/result/actar_p1bar_cut1keV_r20mm_tpc.root","RECREATE");
-  rfile=new TFile("/home/local1/workspace/MINOS_simulation/result/test.root","RECREATE");
+  rfile=new TFile("/home/local1/workspace/MINOS_simulation/result/test_protongen.root","RECREATE");
   tree_tpc = new TTree("tpc","A ROOT tree for MINOS data");
   tree_tpc->Branch("tpc","ExN03Datai",&data);
   G4cout << "Beginning of run: TTree creation..." << G4endl;
@@ -85,11 +85,13 @@ if(part!=1)
 	}
 	for(int ii=0; ii<part; ii++)
 	{
-		if(z[ii] > -0.4 && (z[ii] < vertex - 0.01 || z[ii] > vertex + 0.01) && (z[ii] > 0. && z[ii] < (detector->GetTargetLength()*2.+1.) && r[ii] > 0. && r[ii] < detector->GetTargetRadius())) {several_reaction_in_target = true;}	
+	  //if(z[ii] > -0.4 && (z[ii] < vertex - 0.01 || z[ii] > vertex + 0.01) && (z[ii] > 0. && z[ii] < (detector->GetTargetLength()*2.+1.) && r[ii] > 0. && r[ii] < detector->GetTargetRadius())) {several_reaction_in_target = true;}	
+		if(z[ii] > -0.4 && (z[ii] < vertex - 0.01 || z[ii] > vertex + 0.01) && (z[ii] > 0. && z[ii] < (detector->GetTargetLength()+1.) && r[ii] > 0. && r[ii] < detector->GetTargetRadius())) {several_reaction_in_target = true;}	
 	}
 	for(int ii=0; ii<part; ii++)
 	{
-		if(z[ii] > -0.4 && !(z[ii] > 0. && z[ii] < (detector->GetTargetLength()*2.) && r[ii] > 0. && r[ii] < detector->GetTargetRadius())) {reaction_in_target = false;}	
+	  //if(z[ii] > -0.4 && !(z[ii] > 0. && z[ii] < (detector->GetTargetLength()*2.) && r[ii] > 0. && r[ii] < detector->GetTargetRadius())) {reaction_in_target = false;}	
+		if(z[ii] > -0.4 && !(z[ii] > 0. && z[ii] < (detector->GetTargetLength()) && r[ii] > 0. && r[ii] < detector->GetTargetRadius())) {reaction_in_target = false;}	
 	}
 }
 if (!b_vertex && part!=1) event = 1; // double reaction

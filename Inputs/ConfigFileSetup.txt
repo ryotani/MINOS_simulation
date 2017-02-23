@@ -1,5 +1,5 @@
 TargetRadius 28.
-TargetLength 150.
+TargetLength 100.
 ChamberInnerRadius 37.
 ChamberThickness 1.
 ChamberLength 300.
