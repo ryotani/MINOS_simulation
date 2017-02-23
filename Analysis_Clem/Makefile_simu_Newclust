@@ -12,7 +12,8 @@ SrcSuf        = cpp
 DllSuf        = dylib
 OutPutOpt     = -o 
 
-minosdata_dir = /Users/acorsi/codes/PUMA_simu
+#minosdata_dir = /Users/acorsi/codes/PUMA_simu
+minosdata_dir = /home/local1/workspace/MINOS_simulation
 
 ### NOTE, FOR THE NEXT 3 LINES TO WORK YOU HAVE TO 
 ### HAVE $(ROOTSYS)/bin in your path

@@ -29,15 +29,16 @@ int main(int argc, char** argv)
 {
    
    	TRint *theApp = new TRint("Rint",&argc,argv,0,0);  
-   
-	TFile *MyFilei = new TFile(("/home/irfulx168/mnt/acorsi/MINOS_Bfield/result/SAMURAI/simu_Li11_250MeV.root"),"READ");
+	
+	//TFile *MyFilei = new TFile(("/home/irfulx168/mnt/acorsi/MINOS_Bfield/result/SAMURAI/simu_Li11_250MeV.root"),"READ");
+	TFile *MyFilei = new TFile(("/home/local1/workspace/result/simu_250MeV.root"),"READ");
 	TTree *MyTreei = (TTree *) MyFilei->Get("tpc");
 	ExN03Datai *tpc = new ExN03Datai;
 	MyTreei->SetBranchAddress("tpc", &tpc);
 	MyTreei->GetBranch("tpc")->SetFile("simu_Li11_250MeV.root");
 	Int_t nevent = MyTreei->GetEntries();
 
-	TFile *MyFileo = new TFile(("/home/irfulx168/mnt/acorsi/MINOS_Bfield/Drift/result/SAMURAI/simu_Li11_250MeV.root"),"RECREATE");
+	TFile *MyFileo = new TFile(("/home/local1/workspace/result/SAMURAI/simu_250MeV.root"),"RECREATE");
 	TTree *MyTreeo = new TTree("MyTreeo","Realistic TPC events");
 	ExN03DataoRings *tpco = new ExN03DataoRings;
 	MyTreeo->Branch("tpco","ExN03DataoRings",&tpco);

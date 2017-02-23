@@ -8,7 +8,7 @@ SigmaMomentumX 0
 MeanMomentumY 0
 SigmaMomentumY 0
 MomentumZ0 1.
-MeanEnergy 92400.
+MeanEnergy 33000.
 SigmaEnergy 0.
-Z 50
-A 132
+Z 28
+A 50

@@ -24,7 +24,8 @@ LIBS         += $(ROOTLIBS)
 #
 LIBS         += -lMinuit
 LDFLAGS       = -O
-LDFLAGS      += -L/Users/acorsi/codes/MINOS_simulation/lib -lExN03Datai -lExN03DataoRings -lExN03Setup
+#LDFLAGS      += -L/Users/acorsi/codes/MINOS_simulation/lib -lExN03Datai -lExN03DataoRings -lExN03Setup
+LDFLAGS      += -L/home/local1/workspace/MINOS_simulation/lib -lExN03Datai -lExN03DataoRings -lExN03Setup
 
 $(PROGNAME):    $(OBJECTS)
 		g++ -o $@ $(OBJECTS) $(LDFLAGS) $(LIBS)

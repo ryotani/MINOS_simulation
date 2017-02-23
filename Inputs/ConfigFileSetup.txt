@@ -1,8 +1,8 @@
-TargetRadius 10.
+TargetRadius 28.
 TargetLength 100.
-ChamberInnerRadius 15.
-ChamberThickness 1.
-ChamberLength 500.
+ChamberInnerRadius 45.
+ChamberThickness 10.
+ChamberLength 300.
 InnerRohacellThickness 1.
 KaptonThickness 0.125
 OuterRohacellThickness 2.

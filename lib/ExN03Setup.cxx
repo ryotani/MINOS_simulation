@@ -2,7 +2,8 @@
 ClassImp(ExN03Setup)
 
 ExN03Setup::ExN03Setup(){
-ReadConfigurationFile("ConfigFileSetup_ACTAR.txt");
+  //ReadConfigurationFile("ConfigFileSetup_ACTAR.txt");
+  ReadConfigurationFile("ConfigFileSetup.txt");
 }
 
 ExN03Setup::~ExN03Setup(){

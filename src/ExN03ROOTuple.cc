@@ -26,10 +26,11 @@ ExN03ROOTuple::~ExN03ROOTuple(){
 //en debut de run on definit la composition du fichier root
 void ExN03ROOTuple::RecordBeginOfRun()
 {
-		rfile=new TFile("/Users/acorsi/codes/MINOS_simulation/result/actar_p1bar_cut1keV_r20mm_tpc.root","RECREATE");
-		tree_tpc = new TTree("tpc","A ROOT tree for MINOS data");
-		tree_tpc->Branch("tpc","ExN03Datai",&data);
-		G4cout << "Beginning of run: TTree creation..." << G4endl;
+  //rfile=new TFile("/Users/acorsi/codes/MINOS_simulation/result/actar_p1bar_cut1keV_r20mm_tpc.root","RECREATE");
+  rfile=new TFile("/home/local1/workspace/MINOS_simulation/result/test.root","RECREATE");
+  tree_tpc = new TTree("tpc","A ROOT tree for MINOS data");
+  tree_tpc->Branch("tpc","ExN03Datai",&data);
+  G4cout << "Beginning of run: TTree creation..." << G4endl;
 }
 
 void ExN03ROOTuple::RecordEndOfRun()
