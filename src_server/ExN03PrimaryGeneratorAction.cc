@@ -1,0 +1,86 @@
+#include "ExN03PrimaryGeneratorAction.hh"
+
+#include "ExN03DetectorConstruction.hh"
+
+#include "G4Event.hh"
+#include "G4ParticleGun.hh"
+#include "G4ParticleTable.hh"
+#include "G4NucleiPropertiesTableAME03.hh"
+//#include "G4NucleiPropertiesTable.hh"
+#include "G4VIsotopeTable.hh"
+#include "G4ParticleDefinition.hh"
+#include "Randomize.hh"
+#include "G4GeneralParticleSource.hh"
+#include "G4IonTable.hh"
+
+using namespace CLHEP;
+
+ExN03PrimaryGeneratorAction::ExN03PrimaryGeneratorAction()
+{
+  BeamIn = new ExN03BeamIn();
+
+  G4int n_particle = 1;
+  particleGun  = new G4ParticleGun(n_particle);
+  SetDefaultPrimaryParticle();  
+} 
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+ExN03PrimaryGeneratorAction::~ExN03PrimaryGeneratorAction()
+{
+  delete particleGun;
+}
+
+void ExN03PrimaryGeneratorAction::SetDefaultPrimaryParticle()
+{    
+  // default particle characteristics
+  
+  MeanX=BeamIn->MeanX;    // position moyenne du faisceau en X
+  SigmaX=BeamIn->SigmaX;   // écart-type de la position du faisceau en X
+  MeanY=BeamIn->MeanY;    // position moyenne du faisceau en Y
+  SigmaY=BeamIn->SigmaY;   // écart-type de la position du faisceau en Y
+  Z0=BeamIn->Z0;
+  MomentumZ0=BeamIn->MomentumZ0;
+  MeanEnergy=BeamIn->MeanEnergy;
+  SigmaEnergy=BeamIn->SigmaEnergy;
+  MeanMomentumX=BeamIn->MeanMomentumX;    
+  SigmaMomentumX=BeamIn->SigmaMomentumX;   
+  MeanMomentumY=BeamIn->MeanMomentumY;    
+  SigmaMomentumY=BeamIn->SigmaMomentumY;
+  Z=BeamIn->Z;
+  A=BeamIn->A;
+
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+void ExN03PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
+{
+  //this function is called at the begining of event
+
+  //definition of beam
+  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
+  G4ParticleDefinition *particle = particleTable->GetIon(Z,A,0.);
+  particleGun->SetParticleDefinition(particle);  
+    
+  // random position of the beam
+  G4double x0 = G4RandGauss::shoot(MeanX, SigmaX);
+  G4double y0 = G4RandGauss::shoot(MeanY, SigmaY);
+  G4double z0 = Z0;
+  particleGun->SetParticlePosition(G4ThreeVector(x0*mm,y0*mm,z0*mm));  
+  
+  // random momentum of the beam 
+  G4double momentumX = G4RandGauss::shoot(MeanMomentumX, SigmaMomentumX);
+  G4double momentumY = G4RandGauss::shoot(MeanMomentumY, SigmaMomentumY);
+  G4double momentumZ = MomentumZ0;  
+  particleGun->SetParticleMomentumDirection(G4ThreeVector(momentumX,momentumY,momentumZ));
+  
+  // random energy of the beam
+  G4double energy = G4RandGauss::shoot(MeanEnergy, SigmaEnergy);
+  particleGun->SetParticleEnergy(energy*MeV);
+  
+  particleGun->GeneratePrimaryVertex(anEvent);
+  
+}
+
+

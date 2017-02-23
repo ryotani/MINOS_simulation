@@ -1,1 +1,14 @@
-ConfigFileRingsSameB4T.txt
+NRings 18
+NSegments 256
+FirstRing 45.2
+LastRing 83.
+sigL   0.186
+sigT   0.195
+driftV 0.048
+Ionis  25.0
+Gain  3600.
+Theta 1.
+NoiseRMS 2500.
+Threshold 7.
+TimeBin 20.0
+ShapingTime 200.

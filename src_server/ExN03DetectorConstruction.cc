@@ -20,13 +20,13 @@
 #include "G4ChordFinder.hh"
 #include "G4MagIntegratorStepper.hh"
 #include "G4UserLimits.hh"
-#include "MyMagneticField.hh"
 
 #include "G4MagIntegratorStepper.hh"
 
 #include "G4UserLimits.hh"
-using namespace CLHEP;
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+using namespace CLHEP;
 
 ExN03DetectorConstruction::ExN03DetectorConstruction()
 {
@@ -48,7 +48,7 @@ ExN03DetectorConstruction::ExN03DetectorConstruction()
   DefineMaterials();
   SetTargetMaterial("LH2");
   SetChamberMaterial("Inox");
-  SetTPCMaterial("LH2"); //SetTPCMaterial("mix"); 
+  SetTPCMaterial("mix"); 
   SetWindowMaterial("Mylar");  
   SetKaptonMaterial("Kapton");  
   SetInnerRohacellMaterial("Rohacell");
@@ -108,6 +108,7 @@ CF4->AddElement(C, natoms=1);
 CF4->AddElement(F, natoms=4);
 // overwrite computed meanExcitationEnergy with ICRU recommended value 
 CF4->GetIonisation()->SetMeanExcitationEnergy(20.0*eV);
+   G4cout << "before problem" << G4endl;  
 G4Material* mix = 
 new G4Material("mix", density= 0.0019836*g/cm3, ncomponents=3);
 mix->AddMaterial(CF4, fractionmass=15.*perCent);
@@ -142,8 +143,6 @@ Ar_iso_95_5->GetIonisation()->SetMeanExcitationEnergy(25.0*eV);
 
 G4Material* LH2 = 
 new G4Material("LH2", density= 0.0715*g/cm3, ncomponents=1);
-//new G4Material("LH2", density= 8.3e-5*g/cm3, ncomponents=1);
-//new G4Material("LH2", density= 4.1906e-5*g/cm3, ncomponents=1);
 LH2->AddElement(H, natoms=2);
 
 G4Material* Myl = 
@@ -234,12 +233,12 @@ G4VPhysicalVolume* ExN03DetectorConstruction::Construct()
                                  0,			//its mother  volume
                                  false,			//no boolean operation
                                  0);			//copy number
-  cout<<WorldSizeXY<<" "<<WorldSizeXY<<" "<<WorldSizeZ<<endl;
+  
   //                               
   // Target
   //  
   solidTarget=0; logicTarget=0; physiTarget=0;
-  //solidChamber=0; logicChamber=0; physiChamber=0;
+  solidChamber=0; logicChamber=0; physiChamber=0;
   solidTPC=0; logicTPC=0; physiTPC=0;
   
      solidTarget = new G4Tubs("Target",		//its name
@@ -256,10 +255,11 @@ G4VPhysicalVolume* ExN03DetectorConstruction::Construct()
                                      logicWorld,	//its mother  volume
                                      false,		//no boolean operation
                                      0);		//copy number
-   //                                 
+  
+  //                                 
   // Chamber
   //
-     /* solidChamber = new G4Tubs("Chamber",			//its name
+      solidChamber = new G4Tubs("Chamber",			//its name
                        ChamberInnerRadius,ChamberInnerRadius+ChamberThickness,ChamberLength,0,360.); //size
                        
       logicChamber = new G4LogicalVolume(solidChamber,	//its solid
@@ -320,14 +320,14 @@ G4VPhysicalVolume* ExN03DetectorConstruction::Construct()
                                      "Kapton",	//its name
                                      logicWorld,	//its mother  volume
                                      false,		//no boolean operation
-                                     0);		//copy number*/
+                                     0);		//copy number
   //                               
   // TPC
+  //
   
       solidTPC = new G4Tubs("TPC",		//its name
-			    ChamberInnerRadius + ChamberThickness + InnerRohacellThickness + KaptonThickness + OuterRohacellThickness,TPCRadiusExt,ChamberLength,0,360.); 
-      //TargetRadius,TPCRadiusExt,ChamberLength,0,360.); 
-                           
+                          ChamberInnerRadius + ChamberThickness + InnerRohacellThickness + KaptonThickness + OuterRohacellThickness,TPCRadiusExt,ChamberLength,0,360.); 
+                          
       logicTPC = new G4LogicalVolume(solidTPC,    //its solid
       			                  TPCMaterial, //its material
       			                  "TPC"); //name
@@ -342,8 +342,9 @@ G4VPhysicalVolume* ExN03DetectorConstruction::Construct()
   //                               
   // window
   //
-      /*solidWindow0 = new G4Tubs("WindowTube",		//its name
-                          TargetRadius,TargetRadius+WindowThickness*2.,TargetLength,0,360.);
+  
+      solidWindow0 = new G4Tubs("WindowTube",		//its name
+                          TargetRadius,TargetRadius+WindowThickness*2.,TargetLength,0,360.); 
                           
       logicWindow0 = new G4LogicalVolume(solidWindow0,    //its solid
       			                  WindowMaterial, //its material
@@ -385,46 +386,13 @@ G4VPhysicalVolume* ExN03DetectorConstruction::Construct()
                                      "WindowOutcoming",	//its name
                                      logicWorld,	//its mother  volume
                                      false,		//no boolean operation
-                                     0);		//copy number*/
-     //-------------------------------------------------------------------------
-   // add also My Magnetic field
-   //-------------------------------------------------------------------------
-
-
-   static G4bool fieldIsInitialized = false;
-
-   if(!fieldIsInitialized)
-     {
-
-
-       MyMagneticField* myField = new MyMagneticField(G4ThreeVector(0.,0.,0.));
-      
-       G4FieldManager* fieldMgr
-         = G4TransportationManager::GetTransportationManager()
-         ->GetFieldManager();
-       fieldMgr->SetDetectorField(myField);
-
+                                     0);		//copy number
   
-       
-         G4MagIntegratorStepper *pItsStepper;
-         G4ChordFinder* pChordFinder= new G4ChordFinder(myField,
-                                                        1.0e-2*mm,  // stepper size
-                    pItsStepper=0);
-                    fieldMgr->SetChordFinder(pChordFinder);
-          
-
-       fieldMgr->CreateChordFinder(myField);
-
-       fieldIsInitialized = false;
-     }
-
  
-  G4Region* aRegion1 = new G4Region("TPCLog");
-  logicTPC -> SetRegion(aRegion1);
-  aRegion1 -> AddRootLogicalVolume(logicTPC);
-  G4Region* aRegion2 = new G4Region("TargetLog");
-  logicTarget -> SetRegion(aRegion2);
-  aRegion2 -> AddRootLogicalVolume(logicTarget);  
+  G4Region* aRegion = new G4Region("TPCLog");
+  logicTPC -> SetRegion(aRegion);
+  aRegion -> AddRootLogicalVolume(logicTPC);
+  
   //                                        
   // Visualization attributes
   //
@@ -435,9 +403,9 @@ G4VPhysicalVolume* ExN03DetectorConstruction::Construct()
   // Below are vis attributes that permits someone to test / play 
   // with the interactive expansion / contraction geometry system of the
   // vis/OpenInventor driver :
- /*{G4VisAttributes* simpleBoxVisAtt= new G4VisAttributes(G4Colour(0,1,0));
+ {G4VisAttributes* simpleBoxVisAtt= new G4VisAttributes(G4Colour(0,1,0));
   simpleBoxVisAtt->SetVisibility(true);
-  logicChamber->SetVisAttributes(simpleBoxVisAtt);}*/
+  logicChamber->SetVisAttributes(simpleBoxVisAtt);}
 
  {G4VisAttributes* atb= new G4VisAttributes(G4Colour(1.,1.,0.6));
   logicTPC->SetVisAttributes(atb);}
@@ -446,7 +414,7 @@ G4VPhysicalVolume* ExN03DetectorConstruction::Construct()
   atb->SetForceSolid(true);
   logicTarget->SetVisAttributes(atb);}
   
-  /*{G4VisAttributes* atb= new G4VisAttributes(G4Colour(0,0,1));
+  {G4VisAttributes* atb= new G4VisAttributes(G4Colour(0,0,1));
   atb->SetForceSolid(true);
   logicWindow0->SetVisAttributes(atb);}
   
@@ -456,7 +424,7 @@ G4VPhysicalVolume* ExN03DetectorConstruction::Construct()
   
   {G4VisAttributes* atb= new G4VisAttributes(G4Colour(0,0,1));
   atb->SetForceSolid(true);
-  logicWindow2->SetVisAttributes(atb);}  */
+  logicWindow2->SetVisAttributes(atb);}  
   
   //
   //always return the physical World

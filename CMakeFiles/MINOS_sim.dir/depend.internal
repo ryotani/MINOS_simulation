@@ -3,9 +3,6 @@
 
 CMakeFiles/MINOS_sim.dir/MINOS_sim.cc.o
  /home/local1/workspace/MINOS_simulation/MINOS_sim.cc
- /home/local1/workspace/MINOS_simulation/lib/ExN03BeamIn.hh
- /home/local1/workspace/MINOS_simulation/lib/ExN03Datai.hh
- /home/local1/workspace/MINOS_simulation/lib/ExN03Setup.hh
  /usr/include/QtCore/qmap.h
  /usr/include/QtCore/qobject.h
  /usr/include/QtCore/qstringlist.h
@@ -1007,7 +1004,6 @@ CMakeFiles/MINOS_sim.dir/MINOS_sim.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/trkdefs.hh
  /usr/local/geant4.10.00.p01/include/Geant4/windefs.hh
  /usr/local/root/5.34.09/include/root/DllImport.h
- /usr/local/root/5.34.09/include/root/Foption.h
  /usr/local/root/5.34.09/include/root/Property.h
  /usr/local/root/5.34.09/include/root/RConfig.h
  /usr/local/root/5.34.09/include/root/RVersion.h
@@ -1015,17 +1011,11 @@ CMakeFiles/MINOS_sim.dir/MINOS_sim.cc.o
  /usr/local/root/5.34.09/include/root/Rtypeinfo.h
  /usr/local/root/5.34.09/include/root/Rtypes.h
  /usr/local/root/5.34.09/include/root/TArray.h
- /usr/local/root/5.34.09/include/root/TArrayC.h
  /usr/local/root/5.34.09/include/root/TArrayD.h
- /usr/local/root/5.34.09/include/root/TArrayF.h
  /usr/local/root/5.34.09/include/root/TArrayI.h
- /usr/local/root/5.34.09/include/root/TArrayS.h
- /usr/local/root/5.34.09/include/root/TAtt3D.h
- /usr/local/root/5.34.09/include/root/TAttAxis.h
  /usr/local/root/5.34.09/include/root/TAttFill.h
  /usr/local/root/5.34.09/include/root/TAttLine.h
  /usr/local/root/5.34.09/include/root/TAttMarker.h
- /usr/local/root/5.34.09/include/root/TAxis.h
  /usr/local/root/5.34.09/include/root/TBranch.h
  /usr/local/root/5.34.09/include/root/TBuffer.h
  /usr/local/root/5.34.09/include/root/TClass.h
@@ -1037,19 +1027,13 @@ CMakeFiles/MINOS_sim.dir/MINOS_sim.cc.o
  /usr/local/root/5.34.09/include/root/TDirectoryFile.h
  /usr/local/root/5.34.09/include/root/TError.h
  /usr/local/root/5.34.09/include/root/TFile.h
- /usr/local/root/5.34.09/include/root/TFitResultPtr.h
  /usr/local/root/5.34.09/include/root/TGenericClassInfo.h
- /usr/local/root/5.34.09/include/root/TH1.h
- /usr/local/root/5.34.09/include/root/TH2.h
- /usr/local/root/5.34.09/include/root/TH3.h
  /usr/local/root/5.34.09/include/root/THashTable.h
  /usr/local/root/5.34.09/include/root/TIterator.h
  /usr/local/root/5.34.09/include/root/TList.h
  /usr/local/root/5.34.09/include/root/TMap.h
  /usr/local/root/5.34.09/include/root/TMath.h
  /usr/local/root/5.34.09/include/root/TMathBase.h
- /usr/local/root/5.34.09/include/root/TMatrixDBasefwd.h
- /usr/local/root/5.34.09/include/root/TMatrixFBasefwd.h
  /usr/local/root/5.34.09/include/root/TNamed.h
  /usr/local/root/5.34.09/include/root/TNtuple.h
  /usr/local/root/5.34.09/include/root/TObjArray.h
@@ -1064,15 +1048,12 @@ CMakeFiles/MINOS_sim.dir/MINOS_sim.cc.o
  /usr/local/root/5.34.09/include/root/TTree.h
  /usr/local/root/5.34.09/include/root/TUUID.h
  /usr/local/root/5.34.09/include/root/TUrl.h
- /usr/local/root/5.34.09/include/root/TVectorDfwd.h
- /usr/local/root/5.34.09/include/root/TVectorFfwd.h
  /usr/local/root/5.34.09/include/root/TVersionCheck.h
  /usr/local/root/5.34.09/include/root/TVirtualTreePlayer.h
  /usr/local/root/5.34.09/include/root/snprintf.h
  /usr/local/root/5.34.09/include/root/strlcpy.h
  include/ExN03DetectorConstruction.hh
  include/ExN03EventAction.hh
- include/ExN03PhysicsList.hh
  include/ExN03PrimaryGeneratorAction.hh
  include/ExN03ROOTuple.hh
  include/ExN03RunAction.hh
@@ -1080,6 +1061,9 @@ CMakeFiles/MINOS_sim.dir/MINOS_sim.cc.o
  include/ExN03TrackingAction.hh
  include/MinosModularPhysicsList.hh
  include/RecorderBase.hh
+ lib/ExN03BeamIn.hh
+ lib/ExN03Datai.hh
+ lib/ExN03Setup.hh
 CMakeFiles/MINOS_sim.dir/src/ExN03DetectorConstruction.cc.o
  /home/local1/workspace/MINOS_simulation/lib/ExN03Setup.hh
  /home/local1/workspace/MINOS_simulation/src/ExN03DetectorConstruction.cc
@@ -1449,6 +1433,7 @@ CMakeFiles/MINOS_sim.dir/src/ExN03EventAction.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4UnitsTable.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4UnitsTable.icc
  /usr/local/geant4.10.00.p01/include/Geant4/G4UserEventAction.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4UserRunAction.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4VDigiCollection.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4VHitsCollection.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4VPhysicalVolume.hh
@@ -1471,6 +1456,7 @@ CMakeFiles/MINOS_sim.dir/src/ExN03EventAction.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/trkdefs.hh
  /usr/local/geant4.10.00.p01/include/Geant4/windefs.hh
  include/ExN03EventAction.hh
+ include/ExN03RunAction.hh
  include/RecorderBase.hh
 CMakeFiles/MINOS_sim.dir/src/ExN03PhysicsList.cc.o
  /home/local1/workspace/MINOS_simulation/src/ExN03PhysicsList.cc
@@ -1861,8 +1847,6 @@ CMakeFiles/MINOS_sim.dir/src/ExN03PhysicsList.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/windefs.hh
  include/ExN03PhysicsList.hh
 CMakeFiles/MINOS_sim.dir/src/ExN03PrimaryGeneratorAction.cc.o
- /home/local1/workspace/MINOS_simulation/lib/ExN03BeamIn.hh
- /home/local1/workspace/MINOS_simulation/lib/ExN03Setup.hh
  /home/local1/workspace/MINOS_simulation/src/ExN03PrimaryGeneratorAction.cc
  /usr/local/clhep/2.1.4.1/include/CLHEP/Random/DRand48Engine.h
  /usr/local/clhep/2.1.4.1/include/CLHEP/Random/DualRand.h
@@ -1968,7 +1952,6 @@ CMakeFiles/MINOS_sim.dir/src/ExN03PrimaryGeneratorAction.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4HCofThisEvent.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4IonTable.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Ions.hh
- /usr/local/geant4.10.00.p01/include/Geant4/G4KaonPlus.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Log.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4LogicalVolume.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4LogicalVolume.icc
@@ -1997,7 +1980,6 @@ CMakeFiles/MINOS_sim.dir/src/ExN03PrimaryGeneratorAction.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4NavigationLogger.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Navigator.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Navigator.icc
- /usr/local/geant4.10.00.p01/include/Geant4/G4Neutron.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4NormalNavigation.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4NormalNavigation.icc
  /usr/local/geant4.10.00.p01/include/Geant4/G4NucleiPropertiesTableAME03.hh
@@ -2018,7 +2000,6 @@ CMakeFiles/MINOS_sim.dir/src/ExN03PrimaryGeneratorAction.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4PhysicsVectorType.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4PrimaryParticle.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4PrimaryVertex.hh
- /usr/local/geant4.10.00.p01/include/Geant4/G4Proton.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4ReferenceCountedHandle.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Region.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Region.icc
@@ -2081,64 +2062,30 @@ CMakeFiles/MINOS_sim.dir/src/ExN03PrimaryGeneratorAction.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/tls.hh
  /usr/local/geant4.10.00.p01/include/Geant4/windefs.hh
  /usr/local/root/5.34.09/include/root/DllImport.h
- /usr/local/root/5.34.09/include/root/Foption.h
  /usr/local/root/5.34.09/include/root/RConfig.h
  /usr/local/root/5.34.09/include/root/RVersion.h
  /usr/local/root/5.34.09/include/root/Riosfwd.h
  /usr/local/root/5.34.09/include/root/Rtypeinfo.h
  /usr/local/root/5.34.09/include/root/Rtypes.h
- /usr/local/root/5.34.09/include/root/TArray.h
- /usr/local/root/5.34.09/include/root/TArrayC.h
- /usr/local/root/5.34.09/include/root/TArrayD.h
- /usr/local/root/5.34.09/include/root/TArrayF.h
- /usr/local/root/5.34.09/include/root/TArrayI.h
- /usr/local/root/5.34.09/include/root/TArrayS.h
- /usr/local/root/5.34.09/include/root/TAtt3D.h
- /usr/local/root/5.34.09/include/root/TAttAxis.h
- /usr/local/root/5.34.09/include/root/TAttFill.h
- /usr/local/root/5.34.09/include/root/TAttLine.h
- /usr/local/root/5.34.09/include/root/TAttMarker.h
- /usr/local/root/5.34.09/include/root/TAxis.h
  /usr/local/root/5.34.09/include/root/TBuffer.h
- /usr/local/root/5.34.09/include/root/TCollection.h
- /usr/local/root/5.34.09/include/root/TDatime.h
- /usr/local/root/5.34.09/include/root/TDirectory.h
- /usr/local/root/5.34.09/include/root/TDirectoryFile.h
  /usr/local/root/5.34.09/include/root/TError.h
- /usr/local/root/5.34.09/include/root/TFile.h
- /usr/local/root/5.34.09/include/root/TFitResultPtr.h
  /usr/local/root/5.34.09/include/root/TGenericClassInfo.h
- /usr/local/root/5.34.09/include/root/TH1.h
- /usr/local/root/5.34.09/include/root/TH2.h
- /usr/local/root/5.34.09/include/root/TH3.h
- /usr/local/root/5.34.09/include/root/THashTable.h
- /usr/local/root/5.34.09/include/root/TIterator.h
- /usr/local/root/5.34.09/include/root/TList.h
- /usr/local/root/5.34.09/include/root/TMap.h
  /usr/local/root/5.34.09/include/root/TMath.h
  /usr/local/root/5.34.09/include/root/TMathBase.h
- /usr/local/root/5.34.09/include/root/TMatrixDBasefwd.h
- /usr/local/root/5.34.09/include/root/TMatrixFBasefwd.h
  /usr/local/root/5.34.09/include/root/TNamed.h
  /usr/local/root/5.34.09/include/root/TObject.h
  /usr/local/root/5.34.09/include/root/TRandom.h
  /usr/local/root/5.34.09/include/root/TSchemaHelper.h
- /usr/local/root/5.34.09/include/root/TSeqCollection.h
  /usr/local/root/5.34.09/include/root/TStorage.h
  /usr/local/root/5.34.09/include/root/TString.h
- /usr/local/root/5.34.09/include/root/TUUID.h
- /usr/local/root/5.34.09/include/root/TUrl.h
- /usr/local/root/5.34.09/include/root/TVectorDfwd.h
- /usr/local/root/5.34.09/include/root/TVectorFfwd.h
  /usr/local/root/5.34.09/include/root/TVersionCheck.h
  /usr/local/root/5.34.09/include/root/snprintf.h
  /usr/local/root/5.34.09/include/root/strlcpy.h
  include/ExN03DetectorConstruction.hh
  include/ExN03PrimaryGeneratorAction.hh
+ lib/ExN03BeamIn.hh
+ lib/ExN03Setup.hh
 CMakeFiles/MINOS_sim.dir/src/ExN03ROOTuple.cc.o
- /home/local1/workspace/MINOS_simulation/lib/ExN03BeamIn.hh
- /home/local1/workspace/MINOS_simulation/lib/ExN03Datai.hh
- /home/local1/workspace/MINOS_simulation/lib/ExN03Setup.hh
  /home/local1/workspace/MINOS_simulation/src/ExN03ROOTuple.cc
  /usr/local/clhep/2.1.4.1/include/CLHEP/Geometry/BasicVector3D.h
  /usr/local/clhep/2.1.4.1/include/CLHEP/Geometry/Normal3D.h
@@ -2231,6 +2178,8 @@ CMakeFiles/MINOS_sim.dir/src/ExN03ROOTuple.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4AffineTransform.icc
  /usr/local/geant4.10.00.p01/include/Geant4/G4Allocator.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4AllocatorPool.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4AtomicShell.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4AtomicShellEnumerator.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4CollectionNameVector.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4DCofThisEvent.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4DataVector.hh
@@ -2241,6 +2190,7 @@ CMakeFiles/MINOS_sim.dir/src/ExN03ROOTuple.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4Element.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4ElementTable.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4ElementVector.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4EmCalculator.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4EnhancedVecAllocator.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Event.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4ExceptionSeverity.hh
@@ -2258,6 +2208,7 @@ CMakeFiles/MINOS_sim.dir/src/ExN03ROOTuple.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4LogicalVolume.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4LogicalVolume.icc
  /usr/local/geant4.10.00.p01/include/Geant4/G4LorentzVector.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4MCCIndexConversionTable.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4MTHepRandom.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4MTHepRandom.icc
  /usr/local/geant4.10.00.p01/include/Geant4/G4MTRandBit.hh
@@ -2275,6 +2226,7 @@ CMakeFiles/MINOS_sim.dir/src/ExN03ROOTuple.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4MTRandGeneral.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4MTRandGeneral.icc
  /usr/local/geant4.10.00.p01/include/Geant4/G4Material.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4MaterialCutsCouple.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4MaterialPropertiesTable.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4MaterialPropertiesTable.icc
  /usr/local/geant4.10.00.p01/include/Geant4/G4MaterialPropertyVector.hh
@@ -2292,6 +2244,9 @@ CMakeFiles/MINOS_sim.dir/src/ExN03ROOTuple.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4ParticleDefinition.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4ParticleDefinition.icc
  /usr/local/geant4.10.00.p01/include/Geant4/G4ParticleMomentum.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4ParticleTable.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4ParticleTable.icc
+ /usr/local/geant4.10.00.p01/include/Geant4/G4ParticleTableIterator.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4PhysicsModelCatalog.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4PhysicsOrderedFreeVector.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4PhysicsOrderedFreeVector.icc
@@ -2303,6 +2258,8 @@ CMakeFiles/MINOS_sim.dir/src/ExN03ROOTuple.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4PrimaryParticle.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4PrimaryVertex.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4ProcessType.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4ProductionCuts.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4ProductionCutsTable.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4ReferenceCountedHandle.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Region.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Region.icc
@@ -2333,6 +2290,7 @@ CMakeFiles/MINOS_sim.dir/src/ExN03ROOTuple.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4TrajectoryContainer.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Transform3D.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4Types.hh
+ /usr/local/geant4.10.00.p01/include/Geant4/G4VAtomDeexcitation.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4VDigiCollection.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4VHit.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4VHitsCollection.hh
@@ -2414,6 +2372,9 @@ CMakeFiles/MINOS_sim.dir/src/ExN03ROOTuple.cc.o
  include/ExN03DetectorConstruction.hh
  include/ExN03ROOTuple.hh
  include/RecorderBase.hh
+ lib/ExN03BeamIn.hh
+ lib/ExN03Datai.hh
+ lib/ExN03Setup.hh
 CMakeFiles/MINOS_sim.dir/src/ExN03RunAction.cc.o
  /home/local1/workspace/MINOS_simulation/src/ExN03RunAction.cc
  /usr/local/clhep/2.1.4.1/include/CLHEP/Random/DRand48Engine.h
@@ -2687,7 +2648,6 @@ CMakeFiles/MINOS_sim.dir/src/ExN03RunAction.cc.o
  include/ExN03RunAction.hh
  include/RecorderBase.hh
 CMakeFiles/MINOS_sim.dir/src/ExN03SteppingAction.cc.o
- /home/local1/workspace/MINOS_simulation/lib/ExN03Setup.hh
  /home/local1/workspace/MINOS_simulation/src/ExN03SteppingAction.cc
  /usr/local/clhep/2.1.4.1/include/CLHEP/Units/PhysicalConstants.h
  /usr/local/clhep/2.1.4.1/include/CLHEP/Units/SystemOfUnits.h
@@ -2818,8 +2778,8 @@ CMakeFiles/MINOS_sim.dir/src/ExN03SteppingAction.cc.o
  include/ExN03DetectorConstruction.hh
  include/ExN03SteppingAction.hh
  include/RecorderBase.hh
+ lib/ExN03Setup.hh
 CMakeFiles/MINOS_sim.dir/src/ExN03TrackingAction.cc.o
- /home/local1/workspace/MINOS_simulation/lib/ExN03Setup.hh
  /home/local1/workspace/MINOS_simulation/src/ExN03TrackingAction.cc
  /usr/local/clhep/2.1.4.1/include/CLHEP/Units/PhysicalConstants.h
  /usr/local/clhep/2.1.4.1/include/CLHEP/Units/SystemOfUnits.h
@@ -2952,6 +2912,7 @@ CMakeFiles/MINOS_sim.dir/src/ExN03TrackingAction.cc.o
  include/ExN03EventAction.hh
  include/ExN03TrackingAction.hh
  include/RecorderBase.hh
+ lib/ExN03Setup.hh
 CMakeFiles/MINOS_sim.dir/src/MinosModularList.cc.o
  /home/local1/workspace/MINOS_simulation/src/MinosModularList.cc
  /usr/local/clhep/2.1.4.1/include/CLHEP/Random/DRand48Engine.h
@@ -3205,7 +3166,6 @@ CMakeFiles/MINOS_sim.dir/src/MinosModularList.cc.o
  /usr/local/geant4.10.00.p01/include/Geant4/G4HadronFissionProcess.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4HadronInelasticProcess.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4HadronPhysicsINCLXX.hh
- /usr/local/geant4.10.00.p01/include/Geant4/G4HadronPhysicsQGSP_BERT.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4HadronicException.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4HadronicInteraction.hh
  /usr/local/geant4.10.00.p01/include/Geant4/G4HadronicProcess.hh

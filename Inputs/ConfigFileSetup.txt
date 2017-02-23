@@ -1,19 +1,12 @@
 TargetRadius 28.
-TargetLength 100.
-ChamberInnerRadius 45.
-ChamberThickness 10.
+TargetLength 150.
+ChamberInnerRadius 37.
+ChamberThickness 1.
 ChamberLength 300.
 InnerRohacellThickness 1.
 KaptonThickness 0.125
 OuterRohacellThickness 2.
-TPCRadiusExt 135.
-TrackerRadiusInt 221.
-TrackerRadiusExt 231.
-TriggerRadiusInt 210.
-TriggerRadiusExt 220.
-TriggerLength 600.
-GammaDetRadiusInt 234.
-GammaDetRadiusExt 244.
+TPCRadiusExt 100.
 WindowThickness 0.150
 
 //MINOS is defined successively by (all values have to be given in millimeters):
